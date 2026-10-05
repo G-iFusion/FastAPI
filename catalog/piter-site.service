@@ -1,0 +1,17 @@
+[Unit]
+Description=Страница умножения на piter
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=pitersite
+Group=pitersite
+WorkingDirectory=/opt/piter-site
+EnvironmentFile=/etc/piter-site.env
+ExecStart=/usr/bin/python3 /opt/piter-site/app.py
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
